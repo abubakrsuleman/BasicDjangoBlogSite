@@ -1,0 +1,14 @@
+{% extends "CMSBase.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+   <p class="h1 text-center mt-5">Welcome {{user.username | title}}</p> 
+   <div class="card">
+      <a class="btn btn-dark rounded-0" style="" href="{% url 'Home' %}" target="_blank">Open Website</a>
+      <a class="btn btn-dark rounded-0" style="" href="{% url 'ManageBlogs' %}">Manage Blogs</a>
+      <a class="btn btn-dark rounded-0" style="" href="{% url 'ManageProfile' user.id %}">Manage Profile</a>
+      <a class="btn btn-dark rounded-0" style="" href="{% url 'ManageWebPages' %}">Manage Webpages</a>
+      <a class="btn btn-dark rounded-0" style="" href="{% url 'logout' %}">Logout <i class="fa fa-sign-out-alt" style="color: #ffffff;"></i></a>
+   </div>
+</div>
+{% endblock content %} 

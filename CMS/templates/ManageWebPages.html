@@ -1,0 +1,52 @@
+{% extends "CMSBase.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+          <li class="breadcrumb-item"><a href="{% url 'CMSHome' %}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Manage Webpages</li>
+        </ol>
+      </nav>
+      
+   <p class="h1 text-center mt-1">Manage Webpages</p> 
+   {% for webpage in webpages %} 
+    <div class="card mb-1">
+    <p class="card-title ml-1 mt-1 h3 "></p>
+    <p class="text-muted ml-1 h6 ">
+    </p>
+
+        <p class="ml-1">{{webpage.HeaderTitle}}</p>
+        <div class="col-sm text-center">
+            <a href="{% url 'UpdateWebPage' webpage.id %}" style="" class="mb-1 btn btn-info"><i class="fa fa-edit"></i></a>
+            <a href="{% url 'DeleteWebPage' webpage.id %}" style="" class="mb-1 btn btn-danger"><i class="fa fa-trash"></i></a>
+        </div>
+
+    </div>
+    {% endfor %}
+    <a href="{% url 'CreateWebPages' %}" style="width: 100%;" class="btn btn-success"><i class="fa fa-plus"></i> Webpage</a>
+
+   </div>
+
+<div class="container">
+    <div class="justify-content-center text-center">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages}}
+    </div>
+  </div>
+  
+  <div class="container">
+  <div class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <a href="?page=1" class="page-link">&laquo; first</a>
+    <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&#8249; previous</a>
+    {% endif %}
+  
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" class="page-link">next &#8250;</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">last &raquo;</a>
+    {% endif %}
+  
+  </div>
+
+  </div>
+{% endblock content %} 

@@ -1,0 +1,25 @@
+{% extends "CMSBase.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+          <li class="breadcrumb-item"><a href="{% url 'CMSHome' %}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Manage Profile</li>
+        </ol>
+      </nav>
+<div class="content-section mt-5">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} 
+        <fieldset class="form-group" style="color: #000000;">
+            <p class="border-bottom text-center h3">Manage Profile </legend>
+            {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <a class="btn btn-primary mb-3" style="width: 100%;" href="{% url 'change_password' %}">Chanage Password</a>
+            <button class="btn btn-info" style="width: 100%;" type="submit"><i class="fas fa-edit" aria-hidden="true"></i> Save Changes</button>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock content %} 

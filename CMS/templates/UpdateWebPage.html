@@ -1,0 +1,25 @@
+{% extends "CMSBase.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{% url 'CMSHome' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'ManageWebPages' %}">Manage Webpages</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Update a Webpage</li>
+        </ol>
+      </nav>
+   <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} 
+    <fieldset class="form-group">
+        <legend class="border-bottom text-center mb-4">Update a Webpage</legend>
+        {{form.media}}
+        {{form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-info" style="width: 100%;" type="submit">Update Webpage...</button>
+    </div>
+</form>
+
+   </div>
+{% endblock content %} 
